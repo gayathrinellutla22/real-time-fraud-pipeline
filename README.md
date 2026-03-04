@@ -110,3 +110,4 @@ The dashboard displays:
 
 ### Latest Transactions Table
 ![Latest Transactions](ss/latest_transactions.png)
+
