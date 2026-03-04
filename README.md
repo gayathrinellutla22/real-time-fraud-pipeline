@@ -26,12 +26,28 @@ Docker – Containerized services (Kafka, Zookeeper, PostgreSQL)
 Streamlit – Real-time data visualization dashboard  
 Pandas – Data processing and analysis
 
+## Project Structure
+consumer/ - Kafka consumer service for fraud scoring  
+producer/ - Kafka producer generating transactions  
+model/ - Fraud scoring logic  
+sql/ - PostgreSQL table schema  
+screenshots/ - Dashboard preview images  
+dashboard.py - Streamlit monitoring dashboard  
+docker-compose.yml - Infrastructure setup for Kafka, Zookeeper, and PostgreSQL
+
 ## Project Workflow
 1. A producer service reads transaction data and streams events into a Kafka topic.  
 2. Kafka acts as a message broker to handle real-time transaction streams.  
 3. A consumer service processes each transaction and applies fraud scoring logic.  
 4. Fraud predictions are inserted into a PostgreSQL database.  
 5. A Streamlit dashboard visualizes transaction metrics and fraud detection results.
+
+## Key Features
+- Real-time transaction streaming using Apache Kafka
+- Fraud scoring pipeline implemented in Python
+- PostgreSQL database for storing fraud prediction results
+- Streamlit dashboard for real-time monitoring
+- Docker-based containerized infrastructure for reproducibility
 
 ## How to Run
 
@@ -41,8 +57,7 @@ Pandas – Data processing and analysis
 - Git installed
 
 ### Step 1: Clone the Repository
-git clone https://github.com/yourusername/real-time-fraud-pipeline.git  
-cd real-time-fraud-pipeline
+git clone https://github.com/gayathrinellutla22/real-time-fraud-pipeline.git
 
 ### Step 2: Start Infrastructure Services
 docker compose up -d
@@ -53,11 +68,7 @@ docker ps
 ### Step 3: Create Kafka Topic
 docker exec -it real-time-fraud-pipeline-kafka-1 bash
 
-kafka-topics --create \
---topic transactions \
---bootstrap-server localhost:9092 \
---partitions 1 \
---replication-factor 1
+kafka-topics --create --topic transactions --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 
 exit
 
@@ -110,4 +121,5 @@ The dashboard displays:
 
 ### Latest Transactions Table
 ![Latest Transactions](ss/latest_transactions.png)
+
 
